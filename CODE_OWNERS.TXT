@@ -230,3 +230,7 @@ D: MinGW
 N: Obfuscator-LLVM team
 E: dev@o-llvm.org
 D: Obfuscator
+
+N: Magic King
+E: ma9icking@qq.com
+D: Magic Obfuscator
