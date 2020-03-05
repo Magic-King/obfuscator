@@ -15,6 +15,9 @@
 #include "llvm/Transforms/Scalar.h"
 #include "llvm/CryptoUtils.h"
 
+// fix createLowerSwitchPass() not declared
+#include "llvm/Transforms/Utils.h"
+
 #define DEBUG_TYPE "flattening"
 
 using namespace llvm;
