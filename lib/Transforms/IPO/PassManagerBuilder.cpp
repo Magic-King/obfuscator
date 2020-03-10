@@ -217,7 +217,12 @@ PassManagerBuilder::PassManagerBuilder() {
         if(!llvm::cryptoutils->prng_seed(AesSeed.c_str()))
 			exit(1);
     }
-
+	
+	//random generator
+	if(!Seed.empty()) {
+        if(!llvm::cryptoutils->prng_seed(Seed.c_str()))
+          exit(1);
+    }
 	
 }
 
