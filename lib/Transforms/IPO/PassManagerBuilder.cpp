@@ -53,6 +53,8 @@
 #include "llvm/Transforms/Obfuscation/Substitution.h"
 #include "llvm/CryptoUtils.h"
 
+#include "llvm/Transforms/Obfuscation/StringObfuscation.h"
+
 using namespace llvm;
 
 static cl::opt<bool>
@@ -169,6 +171,14 @@ static cl::opt<std::string> AesSeed("aesSeed", cl::init(""),
 
 static cl::opt<bool> Split("split", cl::init(false),
                            cl::desc("Enable basic block splitting"));
+
+
+// Flags for string obfuscation
+static cl::opt<std::string> Seed("seed", cl::init(""),
+                                 cl::desc("seed for the random"));
+
+static cl::opt<bool> StringObf("sobf", cl::init(false),
+                               cl::desc("Enable the string obfuscation"));
 
 
 
@@ -475,7 +485,7 @@ void PassManagerBuilder::populateModulePassManager(
   // Allow forcing function attributes as a debugging and tuning aid.
   MPM.add(createForceFunctionAttrsLegacyPass());
 
-
+  MPM.add(createStringObfuscation(StringObf));
   MPM.add(createSplitBasicBlock(Split));
   MPM.add(createBogus(BogusControlFlow));
   MPM.add(createFlattening(Flattening));
