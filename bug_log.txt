@@ -40,6 +40,22 @@ TerminatorInst 继承于 Instruction 类
 using namespace llvm;
 应该是这行不起作用了，然后他就炸了，找不到函数
 
+ollvm-4.0 createPrinterPass() 定义在了include/llvm/Transforms/Scalar.h
+并在 Flattening.h 中被 include
+但是在llvm9.0中对应目录下的 Scalar.h 中没有该函数，故找不到该函数.
+但是却能在llvm namespace里找到
+另一种办法就是 在 Scalar.h 中声明该函数即可.
+
+//===------------------------------------------------------------------
+----===//
+//
+// LowerSwitch - This pass converts SwitchInst instructions into a sequ
+ence of
+// chained binary branch instructions.
+//
+FunctionPass *createLowerSwitchPass();
+extern char &LowerSwitchID;
+
 
 
 
