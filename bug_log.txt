@@ -118,7 +118,7 @@ fla依旧失败
 
 /home/sc/m/obfuscator-llvm-9.0/lib/Transforms/Obfuscation/StringObfuscation.cpp: In member function ‘void llvm::StringObfuscationPass::addDecodeFunction(llvm::Module*, std::vector<llvm::encVar*>*)’:
 /home/sc/m/obfuscator-llvm-9.0/lib/Transforms/Obfuscation/StringObfuscation.cpp:141:102: error: cannot convert ‘llvm::FunctionCallee’ to ‘llvm::Constant*’ in initialization
- onstant* c = mod->getOrInsertFunction(".datadiv_decode" + random_str, FuncTy);
+ Constant* c = mod->getOrInsertFunction(".datadiv_decode" + random_str, FuncTy);
                                                                              ^
 lib/Transforms/Obfuscation/CMakeFiles/LLVMObfuscation.dir/build.make:206: recipe for target 'lib/Transforms/Obfuscation/CMakeFiles/LLVMObfuscation.dir/StringObfuscation.cpp.o' failed
 make[2]: *** [lib/Transforms/Obfuscation/CMakeFiles/LLVMObfuscation.dir/StringObfuscation.cpp.o] Error 1
