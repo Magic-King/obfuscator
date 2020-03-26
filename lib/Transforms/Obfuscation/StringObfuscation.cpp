@@ -138,8 +138,12 @@ namespace llvm {
                         random_stream << StringObfDecodeRandomName;
                         random_stream >> random_str;
                         StringObfDecodeRandomName++;
-                        Constant* c = mod->getOrInsertFunction(".datadiv_decode" + random_str, FuncTy);
-                        Function* fdecode = cast<Function>(c);
+                        //error: cannot convert ‘llvm::FunctionCallee’ to ‘llvm::Constant*’ in initialization
+                        //fix bug
+                        //Constant* c = mod->getOrInsertFunction(".datadiv_decode" + random_str, FuncTy);
+                        //Function* fdecode = cast<Function>(c);
+                        mod->getOrInsertFunction(".datadiv_decode" + random_str, FuncTy);
+                        Function* fdecode = mod->getFunction(".datadiv_decode" + random_str);
                         fdecode->setCallingConv(CallingConv::C);
 
 
